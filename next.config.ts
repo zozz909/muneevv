@@ -11,8 +11,19 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // تحسينات الأداء
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // ضغط الملفات
+  compress: true,
+  // تحسين الصور
   images: {
-    unoptimized: true, // تجنب تحسين الصور لحل مشاكل SSL
+    unoptimized: false, // تفعيل تحسين الصور
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
     domains: [],
     remotePatterns: [
       {

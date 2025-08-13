@@ -2,7 +2,12 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Footer } from '@/components/footer'
+import dynamic from 'next/dynamic';
+
+// Lazy load المكونات غير الضرورية
+const Footer = dynamic(() => import('@/components/footer'), {
+  loading: () => <div className="h-32 bg-gray-100 animate-pulse" />
+});
 import { HeroSection } from '@/components/hero-section'
 import { PromotionalBanner } from '@/components/promotional-banner'
 import { BestsellersSection } from '@/components/bestsellers-section'

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { SafeImage } from '@/components/ui/safe-image';
-import { Upload, X, Loader2, FolderOpen, Image as ImageIcon } from 'lucide-react';
+import { Upload, X, Loader, FolderOpen, ImageIcon } from '@/components/ui/icons';
 import { useToast } from '@/hooks/use-toast';
 
 interface ImageUploadFolderProps {
@@ -264,7 +264,7 @@ export function ImageUploadFolder({
               >
                 {isUploading ? (
                   <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader className="h-4 w-4 mr-2 animate-spin" />
                     جاري الرفع...
                   </>
                 ) : (
