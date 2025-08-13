@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "title": "منيو | قائمة رقمية",
+    "description": "قائمة رقمية رائعة لمطعمك."
+  },
+  "header": {
+    "homeAriaLabel": "صفحة منيو الرئيسية",
+    "adminAriaLabel": "لوحة التحكم"
+  },
+  "footer": {
+    "copyright": "© {year} منيو. جميع الحقوق محفوظة."
+  },
+  "hero": {
+    "welcome": "مرحباً بكم في EVA",
+    "subtitle": "في EVA… كل قهوة وكل حلا صُنعا بكل حب",
+    "exploreMenu": "استكشف القائمة"
+  },
+  "menu": {
+    "title": "قائمتنا",
+    "allCategories": "الكل",
+    "loading": "جاري تحميل القائمة...",
+    "loadingProducts": "جاري التحميل...",
+    "noProducts": "لم يتم العثور على منتجات في هذا الصنف.",
+    "calories": "kcal",
+    "newProduct": "جديد"
+  },
+  "bestsellers": {
+    "title": "الأكثر مبيعاً",
+    "subtitle": "اكتشف أشهى الأطباق المفضلة لدى عملائنا",
+    "viewAll": "عرض الكل",
+    "previous": "السابق",
+    "next": "التالي",
+    "play": "تشغيل",
+    "pause": "إيقاف مؤقت",
+    "loading": "جاري تحميل الأكثر مبيعاً...",
+    "noProducts": "لا توجد منتجات مميزة حالياً"
+  },
+  "promotions": {
+    "fallbackText": "بنر ترويجي",
+    "slideAriaLabel": "الانتقال إلى الشريحة {index}"
+  },
+  "admin": {
+    "title": "لوحة التحكم",
+    "viewMenu": "عرض القائمة",
+    "contentManagement": "إدارة المحتوى",
+    "contentDescription": "قم بإدارة المنتجات والأصناف والبنرات وأكواد الخصم",
+    "products": "المنتجات",
+    "categories": "الأصناف",
+    "banners": "البنرات",
+    "discounts": "الخصومات",
+    "addProduct": "إضافة منتج",
+    "editProduct": "تعديل منتج",
+    "deleteProduct": "حذف منتج",
+    "productName": "اسم المنتج",
+    "productDescription": "وصف المنتج",
+    "productPrice": "السعر",
+    "originalPrice": "السعر الأصلي",
+    "category": "الصنف",
+    "image": "الصورة",
+    "available": "متوفر",
+    "featured": "مميز",
+    "bestseller": "الأكثر مبيعاً",
+    "actions": "الإجراءات",
+    "noProducts": "لا توجد منتجات",
+    "loadingProducts": "جاري تحميل المنتجات...",
+    "addCategory": "إضافة صنف",
+    "editCategory": "تعديل صنف",
+    "deleteCategory": "حذف صنف",
+    "categoryName": "اسم الصنف",
+    "noCategories": "لا توجد أصناف",
+    "loadingCategories": "جاري تحميل الأصناف..."
+  },
+  "common": {
+    "close": "إغلاق",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "add": "إضافة",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "success": "تم بنجاح",
+    "confirm": "تأكيد",
+    "yes": "نعم",
+    "no": "لا"
+  }
+}

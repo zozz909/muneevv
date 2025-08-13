@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "title": "Menu | Digital Menu",
+    "description": "An amazing digital menu for your restaurant."
+  },
+  "header": {
+    "homeAriaLabel": "Menu homepage",
+    "adminAriaLabel": "Admin dashboard"
+  },
+  "footer": {
+    "copyright": "© {year} Menu. All rights reserved."
+  },
+  "hero": {
+    "welcome": "Welcome to EVA",
+    "subtitle": "At EVA... every coffee and every sweet is made with love",
+    "exploreMenu": "Explore Menu"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "allCategories": "All",
+    "loading": "Loading menu...",
+    "loadingProducts": "Loading...",
+    "noProducts": "No products found in this category.",
+    "calories": "kcal",
+    "newProduct": "New"
+  },
+  "bestsellers": {
+    "title": "Bestsellers",
+    "subtitle": "Discover the most delicious dishes loved by our customers",
+    "viewAll": "View All",
+    "previous": "Previous",
+    "next": "Next",
+    "play": "Play",
+    "pause": "Pause",
+    "loading": "Loading bestsellers...",
+    "noProducts": "No featured products available"
+  },
+  "promotions": {
+    "fallbackText": "Promotional banner",
+    "slideAriaLabel": "Go to slide {index}"
+  },
+  "admin": {
+    "title": "Dashboard",
+    "viewMenu": "View Menu",
+    "contentManagement": "Content Management",
+    "contentDescription": "Manage products, categories, banners and discount codes",
+    "products": "Products",
+    "categories": "Categories",
+    "banners": "Banners",
+    "discounts": "Discounts",
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "deleteProduct": "Delete Product",
+    "productName": "Product Name",
+    "productDescription": "Product Description",
+    "productPrice": "Price",
+    "originalPrice": "Original Price",
+    "category": "Category",
+    "image": "Image",
+    "available": "Available",
+    "featured": "Featured",
+    "bestseller": "Bestseller",
+    "actions": "Actions",
+    "noProducts": "No products found",
+    "loadingProducts": "Loading products...",
+    "addCategory": "Add Category",
+    "editCategory": "Edit Category",
+    "deleteCategory": "Delete Category",
+    "categoryName": "Category Name",
+    "noCategories": "No categories found",
+    "loadingCategories": "Loading categories..."
+  },
+  "common": {
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  }
+}
