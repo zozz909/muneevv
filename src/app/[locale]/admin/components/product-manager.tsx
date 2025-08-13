@@ -16,7 +16,7 @@ import { useToast } from "@/hooks/use-toast";
 import { PlusCircle, Edit, Trash2, MoreHorizontal, Loader2 } from "lucide-react";
 import { RiyalLogo } from "@/components/ui/riyal-logo";
 import { SafeImage } from "@/components/ui/safe-image";
-import { ImageUpload } from "@/components/ui/image-upload";
+import { ImageUploadFolder } from "@/components/ui/image-upload-folder";
 import { getSafeImageUrl as getImageUrl } from "@/lib/image-utils";
 
 // أنواع البيانات
@@ -391,7 +391,7 @@ export function ProductManager() {
                   <div className="grid grid-cols-4 items-center gap-4">
                     <Label className="text-right">صورة المنتج</Label>
                     <div className="col-span-3">
-                      <ImageUpload
+                      <ImageUploadFolder
                         value={formData.image_url}
                         onChange={(imageUrl) => setFormData({...formData, image_url: imageUrl})}
                         type="products"

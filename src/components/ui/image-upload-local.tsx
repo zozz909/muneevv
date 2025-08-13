@@ -8,7 +8,7 @@ import { SafeImage } from '@/components/ui/safe-image';
 import { Upload, X, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-interface ImageUploadProps {
+interface ImageUploadLocalProps {
   value?: string;
   onChange: (imageUrl: string) => void;
   type?: 'products' | 'banners';
@@ -16,13 +16,13 @@ interface ImageUploadProps {
   className?: string;
 }
 
-export function ImageUpload({
+export function ImageUploadLocal({
   value,
   onChange,
   type = 'products',
   label = 'الصورة',
   className = ''
-}: ImageUploadProps) {
+}: ImageUploadLocalProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -42,12 +42,12 @@ export function ImageUpload({
       return;
     }
 
-    // التحقق من حجم الملف (5MB max)
-    const maxSize = 5 * 1024 * 1024; // 5MB
+    // التحقق من حجم الملف (1MB max for local storage)
+    const maxSize = 1 * 1024 * 1024; // 1MB
     if (file.size > maxSize) {
       toast({
         title: 'خطأ',
-        description: 'حجم الملف كبير جداً. الحد الأقصى 5MB',
+        description: 'حجم الملف كبير جداً. الحد الأقصى 1MB',
         variant: 'destructive'
       });
       return;
@@ -56,61 +56,50 @@ export function ImageUpload({
     setIsUploading(true);
 
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('type', type);
-
-      // قائمة بالطرق المختلفة للرفع
-      const uploadMethods = [
-        '/api/upload',           // الطريقة الأساسية
-        '/api/upload-simple',    // الطريقة البسيطة
-        '/api/upload-base64'     // الطريقة الاحتياطية
-      ];
-
-      let result = null;
-      let lastError = null;
-
-      // جرب كل طريقة حتى تنجح واحدة
-      for (const method of uploadMethods) {
-        try {
-          console.log(`Trying upload method: ${method}`);
-          const response = await fetch(method, {
-            method: 'POST',
-            body: formData,
-          });
-
-          const methodResult = await response.json();
-
-          if (methodResult.success) {
-            result = methodResult;
-            break;
-          } else {
-            lastError = methodResult.error;
+      // تحويل الملف إلى base64
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        if (result) {
+          // حفظ في localStorage (اختياري)
+          const imageId = `image_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+          try {
+            localStorage.setItem(imageId, result);
+            console.log('Image saved to localStorage with ID:', imageId);
+          } catch (storageError) {
+            console.warn('Could not save to localStorage:', storageError);
           }
-        } catch (methodError) {
-          console.log(`Method ${method} failed:`, methodError);
-          lastError = methodError;
-          continue;
+          
+          // إرجاع الـ data URL مباشرة
+          onChange(result);
+          
+          toast({
+            title: 'نجح',
+            description: 'تم رفع الصورة بنجاح',
+          });
         }
-      }
+        setIsUploading(false);
+      };
 
-      if (result && result.success) {
-        onChange(result.imageUrl);
+      reader.onerror = () => {
         toast({
-          title: 'نجح',
-          description: result.message,
+          title: 'خطأ',
+          description: 'حدث خطأ أثناء قراءة الملف',
+          variant: 'destructive'
         });
-      } else {
-        throw new Error(lastError || 'فشل في جميع طرق الرفع');
-      }
+        setIsUploading(false);
+      };
+
+      reader.readAsDataURL(file);
+
     } catch (error) {
       console.error('Upload error:', error);
       toast({
         title: 'خطأ',
-        description: 'حدث خطأ أثناء رفع الصورة. يرجى المحاولة مرة أخرى.',
+        description: 'حدث خطأ أثناء رفع الصورة',
         variant: 'destructive'
       });
-    } finally {
       setIsUploading(false);
     }
   };
@@ -211,7 +200,7 @@ export function ImageUpload({
               أو اسحب الصورة هنا
             </p>
             <p className="text-xs text-gray-400">
-              JPG, PNG, WebP (حد أقصى 5MB)
+              JPG, PNG, WebP (حد أقصى 1MB)
             </p>
           </div>
         </div>

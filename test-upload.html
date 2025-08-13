@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Vercel Blob Upload</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>اختبار رفع الصور إلى Vercel Blob</h1>
+    
+    <form id="uploadForm">
+        <div>
+            <label>اختر صورة:</label>
+            <input type="file" id="fileInput" accept="image/*" required>
+        </div>
+        <div>
+            <label>النوع:</label>
+            <select id="typeSelect">
+                <option value="products">منتجات</option>
+                <option value="categories">أصناف</option>
+                <option value="banners">بنرات</option>
+            </select>
+        </div>
+        <button type="submit">رفع الصورة</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('fileInput');
+            const typeSelect = document.getElementById('typeSelect');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files[0]) {
+                alert('يرجى اختيار ملف');
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('type', typeSelect.value);
+            
+            resultDiv.innerHTML = '<p>جاري الرفع...</p>';
+            
+            try {
+                // جرب Vercel Blob أولاً
+                console.log('🔄 Trying Vercel Blob upload...');
+                const response = await fetch('/api/upload-vercel', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div style="color: green;">
+                            <h3>✅ نجح الرفع إلى Vercel Blob!</h3>
+                            <p><strong>رابط الصورة:</strong> <a href="${result.imageUrl}" target="_blank">${result.imageUrl}</a></p>
+                            <p><strong>اسم الملف:</strong> ${result.fileName}</p>
+                            <p><strong>حجم الملف:</strong> ${(result.fileSize / 1024).toFixed(2)} KB</p>
+                            <p><strong>نوع الملف:</strong> ${result.fileType}</p>
+                            <img src="${result.imageUrl}" style="max-width: 200px; margin-top: 10px;" alt="Uploaded image">
+                        </div>
+                    `;
+                } else {
+                    throw new Error(result.error);
+                }
+            } catch (error) {
+                console.error('❌ Vercel Blob failed, trying fallback...', error);
+                
+                // جرب الطريقة الاحتياطية
+                try {
+                    const fallbackResponse = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const fallbackResult = await fallbackResponse.json();
+                    
+                    if (fallbackResult.success) {
+                        resultDiv.innerHTML = `
+                            <div style="color: orange;">
+                                <h3>⚠️ نجح الرفع بالطريقة الاحتياطية!</h3>
+                                <p><strong>رابط الصورة:</strong> <a href="${fallbackResult.imageUrl}" target="_blank">${fallbackResult.imageUrl}</a></p>
+                                <p><strong>اسم الملف:</strong> ${fallbackResult.fileName}</p>
+                                <p><strong>حجم الملف:</strong> ${(fallbackResult.fileSize / 1024).toFixed(2)} KB</p>
+                                <p><strong>نوع الملف:</strong> ${fallbackResult.fileType}</p>
+                                <img src="${fallbackResult.imageUrl}" style="max-width: 200px; margin-top: 10px;" alt="Uploaded image">
+                            </div>
+                        `;
+                    } else {
+                        throw new Error(fallbackResult.error);
+                    }
+                } catch (fallbackError) {
+                    resultDiv.innerHTML = `
+                        <div style="color: red;">
+                            <h3>❌ فشل الرفع</h3>
+                            <p>خطأ Vercel Blob: ${error.message}</p>
+                            <p>خطأ الطريقة الاحتياطية: ${fallbackError.message}</p>
+                        </div>
+                    `;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
