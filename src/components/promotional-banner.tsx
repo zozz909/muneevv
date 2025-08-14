@@ -4,7 +4,7 @@ import * as React from "react"
 import { useTranslations } from 'next-intl'
 import { SafeImage } from "@/components/ui/safe-image"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "@/components/ui/icons"
 import { type Promotion } from "@/lib/data"
 
 export function PromotionalBanner({ promotions }: { promotions: Promotion[] }) {

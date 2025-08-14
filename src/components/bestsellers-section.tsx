@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { ProductCard } from '@/components/product-card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, Trophy, Star, Play, Pause } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Trophy, Star, Play, Pause } from '@/components/ui/icons';
 import { transformProductForOldFormat } from '@/lib/data-fetcher';
 
 interface Product {

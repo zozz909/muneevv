@@ -7,17 +7,13 @@ interface RiyalLogoProps {
 
 export function RiyalLogo({ className, size = 20 }: RiyalLogoProps) {
   return (
-    <object
-      data="/sr.svg"
-      type="image/svg+xml"
+    <img
+      src="/sr.svg"
+      alt="ريال سعودي"
       width={size}
       height={size}
       className={cn("inline-block", className)}
-      aria-label="ريال سعودي"
-    >
-      {/* Fallback للمتصفحات القديمة */}
-      <img src="/sr.svg" alt="ريال سعودي" width={size} height={size} />
-    </object>
+    />
   );
 }
 

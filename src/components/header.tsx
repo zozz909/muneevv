@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
-import { User } from 'lucide-react';
+import { User } from '@/components/ui/icons';
 import { LanguageSwitcher } from '@/components/language-switcher';
 
 const MenooLogo = () => (

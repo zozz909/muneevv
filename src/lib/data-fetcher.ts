@@ -4,7 +4,9 @@
 export interface Category {
   id: number;
   name: string;
+  name_en?: string;
   description?: string;
+  description_en?: string;
   display_order: number;
   is_active: boolean;
 }
@@ -12,7 +14,9 @@ export interface Category {
 export interface Product {
   id: number;
   name: string;
+  name_en?: string;
   description?: string;
+  description_en?: string;
   price: number;
   original_price?: number;
   calories?: number;
@@ -22,13 +26,17 @@ export interface Product {
   is_available: boolean;
   is_featured: boolean;
   is_bestseller?: boolean;
+  is_new?: boolean;
+  new_until_date?: string | null;
   display_order: number;
 }
 
 export interface Promotion {
   id: number;
   title: string;
+  title_en?: string;
   description?: string;
+  description_en?: string;
   image_url?: string;
   is_active: boolean;
   display_order: number;

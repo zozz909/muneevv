@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import dynamic from 'next/dynamic';
 
 // Lazy load المكونات غير الضرورية
-const Footer = dynamic(() => import('@/components/footer'), {
+const Footer = dynamic(() => import('@/components/footer').then(mod => ({ default: mod.Footer })), {
   loading: () => <div className="h-32 bg-gray-100 animate-pulse" />
 });
 import { HeroSection } from '@/components/hero-section'
@@ -62,7 +62,7 @@ export default function Home() {
     async function loadData() {
       try {
         setLoading(true);
-        
+
         // جلب البيانات من قاعدة البيانات
         const [dbCategories, dbProducts, dbPromotions] = await Promise.all([
           fetchCategories(),
