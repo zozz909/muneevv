@@ -44,6 +44,8 @@ export function isValidImageUrl(url: string): boolean {
     lowerUrl.includes('raed.net') ||
     lowerUrl.includes('picsum.photos') ||
     lowerUrl.includes('via.placeholder.com') ||
+    lowerUrl.includes('vercel-storage.com') ||
+    lowerUrl.includes('blob.vercel-storage.com') ||
     // قبول أي رابط يحتوي على img أو image
     lowerUrl.includes('/img') ||
     lowerUrl.includes('/image') ||

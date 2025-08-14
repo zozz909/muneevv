@@ -9,7 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { type Product } from "@/lib/data"
 import { getSafeImageUrl } from "@/lib/image-utils"
-import { OptimizedImage } from "@/components/ui/optimized-image"
+import Image from 'next/image'
 import { Flame } from "@/components/ui/icons"
 import { RiyalLogo } from "@/components/ui/riyal-logo"
 import { useTranslations } from 'next-intl'
@@ -35,14 +35,14 @@ export function ProductCard({ product }: { product: Product }) {
     <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group bg-card text-card-foreground border-transparent">
         <CardHeader className="p-0">
           <div className="relative aspect-square w-full overflow-hidden rounded-t-lg">
-            <OptimizedImage
+            <Image
               src={getSafeImageUrl(product.imageUrl)}
               alt={product.name}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-110"
-              lazy={true}
               quality={80}
+              unoptimized={true}
             />
             {/* تاج المنتج الجديد */}
             {isNew && (

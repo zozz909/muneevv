@@ -107,7 +107,7 @@ export function OptimizedImage({
       )}
       
       <Image
-        src={src}
+        src={imgSrc}
         alt={alt}
         width={fill ? undefined : width}
         height={fill ? undefined : height}
@@ -115,6 +115,7 @@ export function OptimizedImage({
         priority={priority}
         sizes={sizes || (fill ? '100vw' : `${width}px`)}
         quality={quality}
+        unoptimized={unoptimized}
         className={`${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500 object-cover`}
         onLoad={() => setLoading(false)}
         onError={() => {
