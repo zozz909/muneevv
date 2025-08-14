@@ -1,12 +1,14 @@
 "use client"
 
 import * as React from "react"
+import { useTranslations } from 'next-intl'
 import { SafeImage } from "@/components/ui/safe-image"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "@/components/ui/icons"
 import { type Promotion } from "@/lib/data"
 
 export function PromotionalBanner({ promotions }: { promotions: Promotion[] }) {
+  const t = useTranslations('promotions');
   const [currentSlide, setCurrentSlide] = React.useState(0)
 
   // التبديل التلقائي كل 5 ثوان
@@ -58,7 +60,7 @@ export function PromotionalBanner({ promotions }: { promotions: Promotion[] }) {
                       priority={index === 0}
                       sizes="100vw"
                       className="object-cover"
-                      fallbackText="بنر ترويجي"
+                      fallbackText={t('fallbackText')}
                     />
                   </CardContent>
                 </Card>
@@ -87,7 +89,7 @@ export function PromotionalBanner({ promotions }: { promotions: Promotion[] }) {
           )}
 
           {/* النقاط المؤشرة */}
-          
+        
         </div>
       </div>
     </section>
